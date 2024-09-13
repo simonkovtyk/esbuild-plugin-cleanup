@@ -17,12 +17,16 @@ const cleanupPlugin = (options: Options): Plugin => ({
 	name: "esbuild-plugin-cleanup",
 	setup: (build: PluginBuild) => {
 		const resolvePathOptions: ResolvePathOptions = {
-			outBase: build.initialOptions.outbase,
-			outDir: build.initialOptions.outdir,
-			outFile: build.initialOptions.outfile,
-			overrideOut: options.overrideOut
+			outBase: build.initialOptions?.outbase,
+			outDir: build.initialOptions?.outdir,
+			outFile: build.initialOptions?.outfile,
+			overrideOut: options?.overrideOut
 		};
 
 		build.onStart(handler(resolvePathOptions));
 	}
 });
+
+export {
+	cleanupPlugin
+}
