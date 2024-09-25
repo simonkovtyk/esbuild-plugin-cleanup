@@ -56,8 +56,7 @@
 		"lint:commit": "commitlint --edit",
 		"lint:eslint": "eslint .",
 		"lint:tsc": "tsc --noEmit",
-		"build": "tsc",
-		"prepare": "husky"
+		"build": "tsc"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
