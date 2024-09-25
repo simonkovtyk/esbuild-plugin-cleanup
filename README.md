@@ -1,80 +1,126 @@
-# esbuild plugin cleanup
+<div align="center">
 
-![NPM Downloads](https://img.shields.io/npm/dw/esbuild-plugin-cleanup) ![NPM License](https://img.shields.io/npm/l/esbuild-plugin-cleanup)
+<img width="196" src="https://raw.githubusercontent.com/simonkovtyk/esbuild-plugin-package-json/d7d77d5766ef9ef97f157c2d221d61a7d3cef51c/docs/esbuild-favicon.svg" />
 
-By deleting the out folder before each new build, the plugin ensures a clean output directory for the build process.
+<h1>Cleanup Plugin</h1>
 
-* Supports newest esbuild version
-* Uses esbuild config to determine the out folder
-* Type declarations (d.ts) included
+<p>By deleting the out folder before each new build, the plugin ensures a clean output directory for the build process.</p>
 
-## How It Works
+![NPM Downloads](https://img.shields.io/npm/dw/esbuild-plugin-cleanup)
+![NPM License](https://img.shields.io/npm/l/esbuild-plugin-package-json)
+![GitHub package.json version](https://img.shields.io/npm/v/esbuild-plugin-cleanup)
+![TypeScript types](https://img.shields.io/badge/TypeScript_types-included-blue)
 
-1. esbuild calls this package in the onStart lifecycle.
-2. Gets the configuration from esbuild or user-defined configuration.
-3. Evaluate the out folder, that should be deleted, based on the given input.
-4. Deletes the evaluated out folder recursively.
+<br />
 
-## Options
+Add a ⭐ to this repository — *it motivates me a lot!*
 
-### Overriding the out-folder
+</div>
 
-This package will use the esbuild out-file, out-folder and/or out-base as path to delete.
-Otherwise it may be helpful to overwrite this path manually:
+## ⚡️ Getting started
 
-```typescript
-cleanupPlugin(
-  overrideOut?: string | undefined
-);
-```
+Simply install this package with your package manager.
 
-## Usage
+````shell
+npm install -D esbuild-plugin-cleanup
+````
 
-### Installation
+<details>
+<summary>📦 other package manager</summary>
 
-The plugin can be installed by any package manager.
+Here are examples for installing the package with other package manager.
 
-<details><summary><b>Show instructions</b></summary>
+> 💾 **yarn**
+> ````shell
+> yarn add -D esbuild-plugin-cleanup
+> ````
 
-> npm \
-> ``npm install esbuild-plugin-cleanup``
-
-> yarn \
-> ``yarn install esbuild-plugin-cleanup``
-
-> pnpm \
-> ``pnpm install esbuild-plugin-cleanup``
+> 💾 **pnpm**
+> ````shell
+> pnpm install -D esbuild-plugin-cleanup
+> ````
 
 </details>
 
-### Integration
+Looks good so far 🔥 — now you have installed the latest version!
 
-The easy way to integrate this plugin in esbuild.
+## 💡 Introduction
 
-<details><summary><b>Show instructions</b></summary>
+This esbuild plugin automatically deletes the previous build before generating a new one, keeping your output directory clean.
+
+It runs a pre-build cleanup step to prevent outdated files from cluttering your project. With minimal configuration, it simplifies workflows and ensures only the latest assets remain.
+
+## 🔧 Usage
+
+```typescript
+cleanupPlugin(options);
+```
+
+This function needs to be called inside the esbuild configuration in order to use this plugin. It will provide the plugin inside the build process of esbuild.
+
+<details>
+<summary>Show an example of the integration</summary>
 
 ````typescript
-await esbuild.build({
+esbuild.build({
+  // some configuration...
   plugins: [
-    cleanupPlugin(...)
+    cleanupPlugin();
+    // more plugins here...
   ]
 })
 ````
 
-[See here for more about the esbuild plugin integration.](https://esbuild.github.io/plugins/#using-plugins)
+</details>
+
+<details>
+<summary>Show an example of the configuration</summary>
+
+````typescript
+cleanupPlugin({
+  // configure here
+});
+````
 
 </details>
 
+### Properties
+
+#### ``overrideOut``
+
+> Default: ``undefined`` (esbuild's output directory)
+
+A ``string``, that specifies the output directory, that'll be cleaned up.
+
+<details>
+<summary>Show an example</summary>
+
+````typescript
+cleanupPlugin({
+  overrideOut: "dist" // any directory allowed
+});
+````
+
+</details>
+
+### Returns
+
+Type: ``Plugin``
+
+An instance of this plugin, that will be used by esbuild automatically.
+
 ## License
 
-The MIT License (MIT) - Please have a look at the LICENSE file for more details.
+The MIT License (MIT) - Please have a look at the [License](https://github.com/simonkovtyk/esbuild-plugin-cleanup/blob/main/LICENSE) file for more details.
 
 ## Contributing
 
-Feel free to contribute to this project.\
-You can fork this project and create a new pull request for contributing.
+Want to contribute to an open-source project on GitHub but unsure where to start? Check out this comprehensive step-by-step guide on how to contribute effectively!
 
-[Get to the repository at GitHub.](https://github.com/simonkovtyk/esbuild-plugin-cleanup)
+From forking the repository to creating pull requests, this guide walks you through every stage of the process, helping you make a successful contribution to this GitHub project. Start collaborating,
+learn new skills, and make an impact on this project!
+
+[See here](https://github.com/simonkovtyk/esbuild-plugin-cleanup/blob/main/docs/guides/HOW_TO_CONTRIBUTE.md) for the contribute guide at GitHub.
 
 <hr>
 

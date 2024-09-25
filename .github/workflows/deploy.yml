@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - release
+      - main
 
 jobs:
   deploy:
@@ -17,13 +17,18 @@ jobs:
           version: latest
           run_install: true
 
+      - name: Lint code
+        run: |
+          pnpm run lint:eslint
+
       - name: Build
-        run: tsc
+        run: pnpm run build
 
       - name: Assets
         run: |
           cp package.json dist/package.json
           cp README.md dist/README.md
+          cp LICENSE dist/LICENSE
 
       - name: Config
         env:
