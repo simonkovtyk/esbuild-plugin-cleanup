@@ -1,5 +1,4 @@
 name: Pull request checks
-
 on:
   pull_request:
     types:
