@@ -26,7 +26,7 @@
 		"esbuild cleanup out"
 	],
 	"license": "MIT",
-	"version": "2.0.0-next.0",
+	"version": "2.0.0-next.1",
 	"bugs": "https://github.com/simonkovtyk/esbuild-plugin-cleanup/issues",
 	"homepage": "https://github.com/simonkovtyk/esbuild-plugin-cleanup",
 	"repository": {
