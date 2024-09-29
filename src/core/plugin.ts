@@ -13,7 +13,7 @@ const handler = (options: ResolvePathOptions): () => Promise<void> => {
   };
 };
 
-const cleanupPlugin = (options: Options): Plugin => ({
+const cleanupPlugin = (options?: Options): Plugin => ({
   name: "esbuild-plugin-cleanup",
   setup: (build: PluginBuild) => {
     const resolvePathOptions: ResolvePathOptions = {
